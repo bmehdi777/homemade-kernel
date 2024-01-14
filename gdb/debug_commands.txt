@@ -1,0 +1,6 @@
+set disassembly-flavor intel
+target remote localhost:1234
+layout asm
+layout regs
+br *0x1001d0
+c
