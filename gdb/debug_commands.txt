@@ -2,5 +2,7 @@ set disassembly-flavor intel
 target remote localhost:1234
 layout asm
 layout regs
-br *0x1001d0
+set directories src/
+symbol-file dist/x86/kernel.debug
+br *0x200150
 c
