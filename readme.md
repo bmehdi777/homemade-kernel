@@ -2,13 +2,16 @@
 
 This is a recreational project.
 
+## Install toolchain
+
+Execute `./scripts/init_toolchain.sh` at the root of the project : it will download the cross-compiler in the folder toolchain/.
+
+> You must do that or modify the Makefile to build the project.
+
 ## Build
 
-First, you need install (or manually create) a cross compiler. 
-Here, I used this one `https://newos.org/toolchains/x86_64-elf-7.5.0-Linux-x86_64.tar.xz`
-
-Then run
+You only need to run :
 
 ```sh
-make <to_complete>
+make build-x86
 ```
