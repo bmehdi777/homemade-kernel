@@ -1,4 +1,4 @@
-# Homemade kernel
+# Homemade kernel (32bit, for now)
 
 This is a recreational project.
 
