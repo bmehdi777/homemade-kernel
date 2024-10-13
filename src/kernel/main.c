@@ -5,5 +5,30 @@ void kmain(void) {
 	initGdt();
 	initVga();
 
-	printk("GDT & VGA are init !\n");
+	printk("GDT & VGA are init !\tHello world\n");
+	printk("GDT & VGA are init !\tHello world\n");
+	printk("GDT & VGA are init !\tHello world\n");
+	printk("GDT & VGA are init !\tHello world\n");
+	printk("GDT & VGA are init !\tHello world\n");
+	printk("GDT & VGA are init !\tHello world\n");
+	printk("GDT & VGA are init !\tHello world\n");
+	printk("GDT & VGA are init !\tHello world\n");
+	printk("GDT & VGA are init !\tHello world\n");
+	printk("GDT & VGA are init !\tHello world\n");
+	printk("GDT & VGA are init !\tHello world\n");
+	printk("GDT & VGA are init !\tHello world\n");
+	printk("GDT & VGA are init !\tHello world\n");
+	printk("GDT & VGA are init !\tHello world\n");
+	printk("GDT & VGA are init !\tHello world\n");
+	printk("GDT & VGA are init !\tHello world\n");
+	printk("GDT & VGA are init !\tHello world\n");
+	printk("GDT & VGA are init !\tHello world\n");
+	printk("GDT & VGA are init !\tHello world\n");
+	printk("GDT & VGA are init !\tHello world\n");
+	printk("GDT & VGA are init !\tHello world\n");
+	printk("GDT & VGA are init !\tHello world\n");
+	printk("GDT & VGA are init !\tHello world\n");
+	printk("GDT & VGA are init !\tHello world\n");
+	printk("GDT & VGA are init !\tHello world\n");
+	printk("GDT & VGA are init !\tHello world10");
 }

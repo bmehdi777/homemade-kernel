@@ -32,10 +32,13 @@ uint8_t terminalEntry(unsigned char uc, uint8_t color);
 void initVga(void);
 void terminalClear(void);
 void terminalSetColor(uint8_t color);
+void terminalScroll(int line);
 void terminalPutEntryAt(char c, uint8_t color, size_t x, size_t y);
+void terminalDeleteLastLine(void);
 void terminalPutChar(char c);
-void terminalWrite(const char *data, size_t size);
+void terminalWrite(char *data, size_t size);
+int handleSpecialCharacter(char character);
 
-void printk(const char *data);
+void printk(char *data);
 
 #endif
