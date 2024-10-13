@@ -1,9 +1,8 @@
 #include "vga.h"
+#include "gdt.h"
 
 void kmain(void) {
-	// init gdt here, before anything else
-
-
-	init_vga();
-	printk("Hello world !\n");
+	initGdt();
+	//initVga();
+	//printk("GDT is init !\r\n");
 }

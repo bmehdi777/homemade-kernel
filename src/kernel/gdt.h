@@ -4,7 +4,21 @@
 #include <stdint.h>
 #include <stddef.h>
 
-// gdt entry
+// GDT entry 
+//
+// +-----------+-----+-----+-----------+-----------+
+// |63       56|55 52|51 48|47       40|39       32|
+// +-----------+-----+-----+-----------+-----------+
+// |Base       |Flags|Limit|Access byte|Base       |
+// |           |     |     |           |           |
+// |31       24|3   0|19 16|           |           |
+// +-----------+-----+-----+-----------+-----------+
+// |31                   16|15                    0|
+// +-----------------------+-----------------------+
+// |Base                   |Limit                  |
+// |                       |                       |
+// |15                    0|15                    0|
+// +-----------------------+-----------------------+
 struct gdt_segment_descriptor {
 	uint16_t limit;
 	uint16_t base_low;
@@ -21,6 +35,6 @@ struct gdt_descriptor {
 }__attribute__((packed));
 
 void initGdt(void);
-void setGdtEntry(uint32_t index, uint32_t base, uint32_t limit, uint8_t access, uint8_t gran);
+void setGdtEntry(uint32_t index, uint32_t base, uint32_t limit, uint8_t access, uint8_t flags);
 
 #endif

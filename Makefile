@@ -7,7 +7,7 @@ x86_asm_object_files := $(patsubst src/arch/x86/%.asm, build/x86/%.o, $(x86_asm_
 lib_source_files := $(shell find src/lib/ -name *.c)
 lib_object_files := $(patsubst src/lib/%.c, build/lib/%.o, $(lib_source_files))
 
-object_files := $(kernel_object_files) $(x86_asm_object_files) $(lib_object_files)
+object_files := $(x86_asm_object_files) $(kernel_object_files) $(lib_object_files)
 
 $(kernel_object_files): build/kernel/%.o : src/kernel/%.c
 	mkdir -p $(dir $@) && \
