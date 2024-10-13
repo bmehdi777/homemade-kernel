@@ -4,5 +4,5 @@ layout asm
 layout regs
 set directories src/
 symbol-file dist/x86/kernel.debug
-br *0x200150
+break kmain
 c

@@ -1,15 +1,27 @@
 ENTRY(_start)
 
 SECTIONS {
-	. = 2M;
+	. = 1M;
 
-	.boot :
+	.text BLOCK(4K) : ALIGN(4K)
 	{
-		KEEP(*(.multiboot_header))
+		*(.multiboot_header)
+		*(.text)
 	}
 
-	.text :
+	.rodata BLOCK(4K) : ALIGN(4K)
 	{
-		*(.text)
+		*(.rodata)
+	}
+
+	.data BLOCK(4K) : ALIGN(4K)
+	{
+		*(.data)
+	}
+
+	.bss BLOCK(4K) : ALIGN(4K)
+	{
+		*(COMMON)
+		*(.bss)
 	}
 }

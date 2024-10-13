@@ -10,11 +10,11 @@ _start:
 	; load gdt here before entering in C code
 	; set CPU to long mode (PM provided by grub)
 
-		call kmain
+	call kmain
 	hlt
 
 section .bss
-align 4096
+align 16
 stack_bottom:
 	resb 4096 * 4
 stack_top:

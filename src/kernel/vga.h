@@ -1,3 +1,6 @@
+#ifndef _KERNEL_VGA_H
+#define _KERNEL_VGA_H
+
 #include <stdint.h>
 #include <stddef.h>
 
@@ -33,3 +36,5 @@ void terminal_put_entry_at(char c, uint8_t color, size_t x, size_t y);
 void terminal_put_char(char c);
 void terminal_write(const char* data, size_t size);
 void terminal_write_string(const char* data);
+
+#endif
