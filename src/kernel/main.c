@@ -3,6 +3,7 @@
 
 void kmain(void) {
 	initGdt();
-	//initVga();
-	//printk("GDT is init !\r\n");
+	initVga();
+
+	printk("GDT & VGA are init !\n");
 }
