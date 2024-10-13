@@ -47,6 +47,6 @@ void terminal_write(const char *data, size_t size) {
     terminal_put_char(data[i]);
   }
 }
-void terminal_write_string(const char *data) {
+void printk(const char *data) {
   terminal_write(data, strlen(data));
 }

@@ -8,7 +8,6 @@ _start:
 
 	; set up paging
 	; load gdt here before entering in C code
-	; set CPU to long mode (PM provided by grub)
 
 	call kmain
 	hlt
