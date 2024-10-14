@@ -1,5 +1,5 @@
-#ifndef _KERNEL_GDT_H
-#define _KERNEL_GDT_H
+#ifndef __KERNEL_GDT_H
+#define __KERNEL_GDT_H
 
 #include <stdint.h>
 #include <stddef.h>
@@ -28,7 +28,7 @@ struct gdt_segment_descriptor {
 	uint8_t base_high;
 }__attribute__((packed)); // ensure the memory layout will be maintained like this
 
-// gdt whole adresse (where it start and where it ends)
+// whole gdt address (where it start and where it ends)
 struct gdt_descriptor {
 	uint16_t size;
 	uint32_t offset;
