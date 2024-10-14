@@ -29,41 +29,45 @@ void terminalClear(void) {
 }
 void terminalSetColor(uint8_t color) { terminal_color = color; }
 
-void terminalScroll(int numLine) {
-  char c;
-	// todo
-  for (uint16_t *loop = (uint16_t *)(numLine * VGA_WIDTH) + 0xB8000;
-       loop < VGA_WIDTH; loop++) {
-    c = (char)*loop;
-		*(loop - VGA_WIDTH) = c;
-  }
+void terminalScroll(void) {
+  for (uint16_t y = 1; y <= VGA_HEIGHT - 1; y++) {
+    for (uint16_t x = 0; x < VGA_WIDTH; x++) {
+      uint16_t old_index = (y-1) * VGA_WIDTH  + x;
+			uint16_t cur_index = y * VGA_WIDTH + x;
+			terminal_buffer[old_index] = terminal_buffer[cur_index];
+		}
+	}
 }
 void terminalPutEntryAt(char c, uint8_t color, size_t x, size_t y) {
-  size_t index = y * VGA_WIDTH + x;
-  terminal_buffer[index] = vgaEntry(c, color);
+	size_t index = y * VGA_WIDTH + x;
+	terminal_buffer[index] = vgaEntry(c, color);
 }
 
-void termianlDeleteLastLine(void) {
+void terminalDeleteLastLine(void) {
 	for (uint16_t x = 0; x < VGA_WIDTH; x++) {
-		uint16_t index = VGA_HEIGHT * VGA_WIDTH + x;
+		uint16_t index = (VGA_HEIGHT - 1) * VGA_WIDTH + x;
 		terminal_buffer[index] = vgaEntry(' ', terminal_color);
 	}
 }
-void terminalPutChar(char c) {
 
-  terminalPutEntryAt(c, terminal_color, terminal_column, terminal_row);
-  if (++terminal_column == VGA_WIDTH) {
+void terminalPutChar(char c) {
+  if (terminal_column+1 == VGA_WIDTH) {
     terminal_column = 0;
-		if (++terminal_row == VGA_HEIGHT)
-		{
-			for(int line = 1; line <= VGA_HEIGHT - 1; line++)
-			{
-				terminalScroll(line);
-			}
-			terminalDeleteLastLine();
-			terminal_row = VGA_HEIGHT - 1;
-		}
+    if (++terminal_row == VGA_HEIGHT) {
+      terminalScroll();
+      terminalDeleteLastLine();
+      terminal_row = VGA_HEIGHT - 1;
+    }
   }
+
+  if (terminal_row == VGA_HEIGHT) {
+    terminal_row++;
+    terminalScroll();
+    terminalDeleteLastLine();
+    terminal_row = VGA_HEIGHT - 1;
+  }
+	terminalPutEntryAt(c, terminal_color, terminal_column, terminal_row);
+	terminal_column++;
 }
 void terminalWrite(char *data, size_t size) {
   for (size_t i = 0; i < size; i++) {
