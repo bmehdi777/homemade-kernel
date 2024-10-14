@@ -92,5 +92,3 @@ int handleSpecialCharacter(char character) {
 
   return 1;
 }
-
-void printk(char *data) { terminalWrite(data, strlen(data)); }

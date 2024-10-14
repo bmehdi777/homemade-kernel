@@ -26,6 +26,7 @@ enum vga_color {
 static const size_t VGA_WIDTH = 80;
 static const size_t VGA_HEIGHT = 25;
 
+uint8_t vgaEntryColor(enum vga_color fg, enum vga_color bg);
 uint8_t terminalEntryColor(enum vga_color fg, enum vga_color bg);
 uint8_t terminalEntry(unsigned char uc, uint8_t color);
 

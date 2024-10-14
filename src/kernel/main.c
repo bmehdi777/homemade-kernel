@@ -1,9 +1,12 @@
 #include "vga.h"
+#include "kstdio.h"
 #include "gdt.h"
 
 void kmain(void) {
 	initGdt();
 	initVga();
 
-	printk("GDT & VGA are init!\n");
+	infok("GDT & VGA are init!");
+	errork("Test error");
+	warningk("Test warning");
 }
