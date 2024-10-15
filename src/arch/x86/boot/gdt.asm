@@ -12,6 +12,12 @@ gdt_flush:
 	mov fs, ax
 	mov gs, ax
 	mov ss, ax
-	jmp 0x08:.flush
+	jmp 0x08:.flush ; code segment
 .flush:
+	ret
+
+global tss_flush
+tss_flush:
+	mov ax, 0x2B  
+	ltr ax        
 	ret
